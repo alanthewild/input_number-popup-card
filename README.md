@@ -2,6 +2,7 @@
 Popup lovelace card with volume slider and optional actions to add more control for input number controlled media players.
 Can be used in combination with thomas loven browser_mod or custom pop-up card or in combination with DBuit's homekit style card: https://github.com/DBuit/Homekit-panel-card
 
+The buy me a coffe link buys DBUIT a coffee as he did all the hard work
 
 <a href="https://www.buymeacoffee.com/ZrUK14i" target="_blank"><img height="41px" width="167px" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy DBuit A Coffee as this was all his hard work"></a>
 
