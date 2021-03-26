@@ -123,6 +123,6 @@ actions:
 
 ### Screenshot
 
-![image](https://user-images.githubusercontent.com/28683403/112617917-71c06f80-8e8a-11eb-9619-04dc40833848.png)
+![Screenshot](screenshot1.png)
 
 ![Screenshot](screenshot.png)
