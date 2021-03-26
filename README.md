@@ -1,32 +1,20 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
-
-# Media player popup card (homekit style)
-Popup lovelace card with volume slider and optional actions to add more control for your media players.
-Can be used in combination with thomas loven browser_mod or custom pop-up card or in combination with my homekit style card: https://github.com/DBuit/Homekit-panel-card
+# Input number popup card for those using Input Numbers for Volume control (homekit style)
+Popup lovelace card with volume slider and optional actions to add more control for input number controlled media players.
+Can be used in combination with thomas loven browser_mod or custom pop-up card or in combination with DBuit's homekit style card: https://github.com/DBuit/Homekit-panel-card
 
 
-<a href="https://www.buymeacoffee.com/ZrUK14i" target="_blank"><img height="41px" width="167px" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee"></a>
+<a href="https://www.buymeacoffee.com/ZrUK14i" target="_blank"><img height="41px" width="167px" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy DBuit A Coffee as this was all his hard work"></a>
 
 ## Configuration
 
 ### Installation instructions
-
-**HACS installation:**
-Go to the hacs store and use the repo url `https://github.com/DBuit/media_player-popup-card` and add this as a custom repository under settings.
-
-Add the following to your ui-lovelace.yaml:
-```yaml
-resources:
-  url: /community_plugin/media_player-popup-card/media_player-popup-card.js
-  type: module
-```
 
 **Manual installation:**
 Copy the .js file from the dist directory to your www directory and add the following to your ui-lovelace.yaml file:
 
 ```yaml
 resources:
-  url: /local/media_player-popup-card.js
+  url: /local/input_number-popup-card.js
   type: module
 ```
 
@@ -34,8 +22,8 @@ resources:
 
 | Name | Type | Default | Supported options | Description |
 | -------------- | ----------- | ------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `entity` | string | **Required** | `light.kitchen` | Entity of the light |
-| `icon` | string | optional | `mdi:lightbulb` | It will use customize entity icon or from the config as a fallback it used lightbulb icon |
+| `entity` | string | **Required** | `input_number.avr_volume` | Entity of the input number |
+| `icon` | string | optional | `mdi:speaker` | It will use customize entity icon or from the config as a fallback it used speaker icon |
 | `fullscreen` | boolean | optional | true | If false it will remove the pop-up wrapper which makes it fullscreen |
 | `actions` | object | optional | `actions:`  | define actions that you can activate from the pop-up. |
 | `actionSize` | string | optional | `50px`  | Set the size of the action buttons default `50px` |
@@ -70,7 +58,7 @@ You can also set the `entity_id` with value **this** if you use **this** it will
 
 Example configuration with next, play/pause and previous actions
 ```
-type: custom:media_player-popup-card
+type: custom:input_number-popup-card
 actions:
   - service: media_player.media_previous_track
     service_data:
