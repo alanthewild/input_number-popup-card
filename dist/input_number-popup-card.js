@@ -3006,7 +3006,7 @@ class InputNumberPopupCard extends LitElement {
         }
     }
     _setVolume(state, value) {
-        this.hass.callService("input_number", "value_set", {
+        this.hass.callService("input_number", "set_value", {
             entity_id: state.entity_id,
             value: value
         });
