@@ -81,20 +81,25 @@ card:
 title: Lounge Volume
 ```
 
+Or you can leave the slider values out and the values from your input_number settings will be used or override the maximum or whichever combination you wish.
+```
+card:
+   entity: input_number.avr_volume
+   type: 'custom:input_number-popup-card'
+   sliderMax: -30
+   sliderStep: 2
+title: Lounge Volume
+```
+
 To show actions in the pop-up you add `actions:` in the config of the card follow bij multiple actions.
 These actions are calling a service with specific service data.
 ```
 actions:
-  - service: scene.turn_on
-    service_data:
-      entity_id: scene.energie
-    color: "#8BCBDD"
-    name: energie
   - service: homeassistant.toggle
     service_data:
-      entity_id: light.voordeurlicht
-    name: voordeur
-    icon: mdi:lightbulb
+      entity_id: switch.avr_mute
+    name: Mute
+    icon: mdi:volume-off
 ```
 The name option within a scene is **optional**
 You can also set the `entity_id` with value **this** if you use **this** it will be replaced with the entity the pop-up is opened for.
@@ -106,17 +111,17 @@ type: custom:input_number-popup-card
 actions:
   - service: media_player.media_previous_track
     service_data:
-      entity_id: this
+      entity_id: media_player.spotify
     name: previous
     icon: mdi:skip-previous
   - service: media_player.media_play_pause
     service_data:
-      entity_id: this
+      entity_id: media_player.spotify
     name: play/pause
     icon: mdi:play-pause
   - service: media_player.media_next_track
     service_data:
-      entity_id: this
+      entity_id: media_player.spotify
     name: next
     icon: mdi:skip-next
 ```
