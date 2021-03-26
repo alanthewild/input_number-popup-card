@@ -35,10 +35,10 @@ resources:
 | `sliderColor` | string | optional | "#FFF" | The color of the slider |
 | `sliderThumbColor` | string | optional | "#ddd" | The color of the line that you use to slide the slider  |
 | `sliderTrackColor` | string | optional | "#ddd" | The color of the slider track |
-| `sliderMin` | string | optional | "0" | The miniumn value for the slider |
-| `sliderMax` | string | optional | "100" | The maximum value of the slider |
-| `sliderStep` | string | optional | "1" | The stepping value the slider track |
-| `sliderUnits` | string | optional | "%" | The units of the slider |
+| `sliderMin` | string | optional | Input Number Min | The miniumn value for the slider |
+| `sliderMax` | string | optional | Input number Max | The maximum value of the slider |
+| `sliderStep` | string | optional | Input Number step | The stepping value the slider track |
+| `sliderUnits` | string | optional | Input number units | The units of the slider |
 | `settings` | boolean | optional | false | When it will add an settings button that displays the more-info content see settings example for my light popup for more options/information [here]: https://github.com/DBuit/light-popup-card#settings |
 | `settingsPosition` | string | optional | `bottom`  | set position of the settings button options: `top` or `bottom`. |
 
