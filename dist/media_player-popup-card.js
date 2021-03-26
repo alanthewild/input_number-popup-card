@@ -2837,7 +2837,7 @@ class MediaPlayerPopupCard extends LitElement {
         var actionsInARow = this.config.actionsInARow ? this.config.actionsInARow : 4;
         var icon = this.config.icon ? this.config.icon : stateObj.attributes.icon ? stateObj.attributes.icon : 'mdi:speaker';
         var borderRadius = this.config.borderRadius ? this.config.borderRadius : '12px';
-        this.currentVolume = Math.round(stateObj.attributes.volume_level * 100);
+        this.currentVolume = (stateObj.state);
         //Actions
         var actionSize = "actionSize" in this.config ? this.config.actionSize : "50px";
         var actions = this.config.actions;
@@ -2884,9 +2884,9 @@ class MediaPlayerPopupCard extends LitElement {
           <div class="icon${fullscreen === true ? ' fullscreen' : ''}${offStates.includes(stateObj.state) ? '' : ' on'}">
               <ha-icon icon="${icon}" />
           </div>
-          <h4 id="volumeValue" class="${stateObj.state === "off" ? '' : 'brightness'}" data-value="${this.currentVolume}%">${stateObj.state === "off" ? b(this.hass.localize, stateObj, this.hass.language) : ''}</h4>
+          <h4 id="volumeValue" class="${stateObj.state === "off" ? '' : 'brightness'}" data-value="${this.currentVolume}${stateObj.attributes.unit_of_measurement}">${stateObj.state === "off" ? b(this.hass.localize, stateObj, this.hass.language) : ''}</h4>
           <div class="range-holder" style="--slider-height: ${sliderHeight};--slider-width: ${sliderWidth};">
-              <input type="range" style="--slider-width: ${sliderWidth};--slider-height: ${sliderHeight}; --slider-border-radius: ${borderRadius};--slider-color:${sliderColor};--slider-thumb-color:${sliderThumbColor};--slider-track-color:${sliderTrackColor};" .value="${stateObj.state === "off" ? 0 : Math.round(stateObj.attributes.volume_level * 100)}" @input=${e => this._previewVolume(e.target.value)} @change=${e => this._setVolume(stateObj, e.target.value)}>
+              <input type="range"  max="${stateObj.attributes.max}" min="${stateObj.attributes.min}" step="${stateObj.attributes.step}" style="--slider-width: ${sliderWidth};--slider-height: ${sliderHeight}; --slider-border-radius: ${borderRadius};--slider-color:${sliderColor};--slider-thumb-color:${sliderThumbColor};--slider-track-color:${sliderTrackColor};" .value="${stateObj.state === "off" ? stateObj.attributes.min : stateObj.state}" @input=${e => this._previewVolume(e.target.value)} @change=${e => this._setVolume(stateObj, e.target.value)}>
           </div>
 
           ${actions && actions.length > 0 ? html `
@@ -2996,13 +2996,13 @@ class MediaPlayerPopupCard extends LitElement {
         this.currentVolume = value;
         const el = this.shadowRoot.getElementById("volumeValue");
         if (el) {
-            el.dataset.value = value + "%";
+            el.dataset.value = value + "${stateObj.attributes.unit_of_measurement}";
         }
     }
     _setVolume(state, value) {
-        this.hass.callService("media_player", "volume_set", {
+        this.hass.callService("input_number", "value_set", {
             entity_id: state.entity_id,
-            volume_level: value / 100
+            value: value
         });
     }
     _activateAction(e) {
