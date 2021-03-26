@@ -2862,6 +2862,10 @@ class InputNumberPopupCard extends LitElement {
         this.settingsPosition = "settingsPosition" in this.config ? this.config.settingsPosition : "bottom";
         var sliderColor = "sliderColor" in this.config ? this.config.sliderColor : "#FFF";
         var sliderThumbColor = "sliderThumbColor" in this.config ? this.config.sliderThumbColor : "#ddd";
+        var sliderMax = "sliderMax" in this.config ? this.config.sliderMax : stateObj.attributes.max;
+        var sliderMin = "sliderMin" in this.config ? this.config.sliderMin : stateObj.attributes.min;
+        var sliderStep = "sliderStep" in this.config ? this.config.sliderStep : stateObj.attributes.step;
+        var sliderUnits = "sliderUnits" in this.config ? this.config.sliderUnits : stateObj.attributes.unit_of_measurement;
         var sliderTrackColor = "sliderTrackColor" in this.config ? this.config.sliderTrackColor : "#ddd";
         if (this.settingsCustomCard && this.config.settingsCard.cardOptions) {
             if (this.config.settingsCard.cardOptions.entity && this.config.settingsCard.cardOptions.entity == 'this') {
@@ -2884,9 +2888,9 @@ class InputNumberPopupCard extends LitElement {
           <div class="icon${fullscreen === true ? ' fullscreen' : ''}${offStates.includes(stateObj.state) ? '' : ' on'}">
               <ha-icon icon="${icon}" />
           </div>
-          <h4 id="volumeValue" class="${stateObj.state === "off" ? '' : 'brightness'}" data-value="${this.currentVolume}${stateObj.attributes.unit_of_measurement}">${stateObj.state === "off" ? b(this.hass.localize, stateObj, this.hass.language) : ''}</h4>
+          <h4 id="volumeValue" class="${stateObj.state === "off" ? '' : 'brightness'}" data-value="${this.currentVolume}${sliderUnits}">${stateObj.state === "off" ? b(this.hass.localize, stateObj, this.hass.language) : ''}</h4>
           <div class="range-holder" style="--slider-height: ${sliderHeight};--slider-width: ${sliderWidth};">
-              <input type="range"  max="${stateObj.attributes.max}" min="${stateObj.attributes.min}" step="${stateObj.attributes.step}" style="--slider-width: ${sliderWidth};--slider-height: ${sliderHeight}; --slider-border-radius: ${borderRadius};--slider-color:${sliderColor};--slider-thumb-color:${sliderThumbColor};--slider-track-color:${sliderTrackColor};" .value="${stateObj.state === "off" ? stateObj.attributes.min : stateObj.state}" @input=${e => this._previewVolume(e.target.value)} @change=${e => this._setVolume(stateObj, e.target.value)}>
+              <input type="range"  max="${sliderMax}" min="${sliderMin}" step="${sliderStep}" style="--slider-width: ${sliderWidth};--slider-height: ${sliderHeight}; --slider-border-radius: ${borderRadius};--slider-color:${sliderColor};--slider-thumb-color:${sliderThumbColor};--slider-track-color:${sliderTrackColor};" .value="${stateObj.state === "off" ? stateObj.attributes.min : stateObj.state}" @input=${e => this._previewVolume(e.target.value)} @change=${e => this._setVolume(stateObj, e.target.value)}>
           </div>
 
           ${actions && actions.length > 0 ? html `
@@ -2996,7 +3000,9 @@ class InputNumberPopupCard extends LitElement {
         this.currentVolume = value;
         const el = this.shadowRoot.getElementById("volumeValue");
         if (el) {
-            el.dataset.value = value + "${stateObj.attributes.unit_of_measurement}";
+            el.dataset.value = value;
+///        Need to work out how to get the units on the end of the value while moving the slider
+///         el.dataset.value = value + "${stateObj.attributes.unit_of_measurement}";            
         }
     }
     _setVolume(state, value) {
