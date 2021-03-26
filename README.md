@@ -35,7 +35,6 @@ resources:
 | `sliderColor` | string | optional | "#FFF" | The color of the slider |
 | `sliderThumbColor` | string | optional | "#ddd" | The color of the line that you use to slide the slider  |
 | `sliderTrackColor` | string | optional | "#ddd" | The color of the slider track |
-
 | `sliderMin` | string | optional | "0" | The miniumn value for the slider |
 | `sliderMax` | string | optional | "100" | The maximum value of the slider |
 | `sliderStep` | string | optional | "1" | The stepping value the slider track |
