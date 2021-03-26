@@ -28,15 +28,59 @@ resources:
 | `fullscreen` | boolean | optional | true | If false it will remove the pop-up wrapper which makes it fullscreen |
 | `actions` | object | optional | `actions:`  | define actions that you can activate from the pop-up. |
 | `actionSize` | string | optional | `50px`  | Set the size of the action buttons default `50px` |
-| `actionsInARow` | number | optional | 3 | number of action that will be placed in a row under the slider |
+| `actionsInARow` | number | optional | 3 | number of actions that will be placed in a row under the slider |
 | `sliderWidth` | string | optional | 150px | The width of the slider |
 | `sliderHeight` | string | optional | 400px | The height of the slider |
 ' `borderRadius` | string | optional | 12px | The border radius of the slider and switch |
 | `sliderColor` | string | optional | "#FFF" | The color of the slider |
 | `sliderThumbColor` | string | optional | "#ddd" | The color of the line that you use to slide the slider  |
 | `sliderTrackColor` | string | optional | "#ddd" | The color of the slider track |
+
+| `sliderMin` | string | optional | "0" | The miniumn value for the slider |
+| `sliderMax` | string | optional | "100" | The maximum value of the slider |
+| `sliderStep` | string | optional | "1" | The stepping value the slider track |
+| `sliderUnits` | string | optional | "%" | The units of the slider |
 | `settings` | boolean | optional | false | When it will add an settings button that displays the more-info content see settings example for my light popup for more options/information [here]: https://github.com/DBuit/light-popup-card#settings |
 | `settingsPosition` | string | optional | `bottom`  | set position of the settings button options: `top` or `bottom`. |
+
+You may need to set the style of the card:
+```
+  sensor.avr_volume_display:
+    style:
+      $: |
+        .mdc-dialog .mdc-dialog__container {
+          width: 100%;
+        }
+        .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+          width:100%;
+          box-shadow:none;
+        }
+      .: |
+        :host {
+          --mdc-theme-surface: rgba(0,0,0,0);
+          --secondary-background-color: rgba(0,0,0,0);
+          --ha-card-background: rgba(0,0,0,0);
+          --mdc-dialog-scrim-color: rgba(0,0,0,0.8);
+          --mdc-dialog-min-height: 100%;
+          --mdc-dialog-min-width: 100%;
+          --mdc-dialog-max-width: 100%;
+        }
+        mwc-icon-button {
+          color: #FFF;
+        }      
+```
+
+Card config example:
+```
+card:
+   entity: input_number.avr_volume
+   type: 'custom:input_number-popup-card'
+   sliderMax: -10
+   sliderMin: -80
+   sliderStep: 0.5
+   sliderUnits: 'dB'
+title: Lounge Volume
+```
 
 To show actions in the pop-up you add `actions:` in the config of the card follow bij multiple actions.
 These actions are calling a service with specific service data.
