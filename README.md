@@ -101,7 +101,7 @@ actions:
     name: Mute
     icon: mdi:volume-off
 ```
-The name option within a scene is **optional**
+The name option within a scene is **optional**<br>
 You can also set the `entity_id` with value `this` if you use `this` it will be replaced with the entity the pop-up is opened for.
 
 
