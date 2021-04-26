@@ -39,7 +39,7 @@ resources:
 | `sliderMax` | string | optional | Input number Max | The maximum value of the slider |
 | `sliderStep` | string | optional | Input Number step | The stepping value the slider track |
 | `sliderUnits` | string | optional | Input number units | The units of the slider |
-| `settings` | boolean | optional | false | When it will add an settings button that displays the more-info content see settings example for my light popup for more options/information [here]: https://github.com/DBuit/light-popup-card#settings |
+| `settings` | boolean | optional | false | When it will add a settings button that displays the more-info content see settings example for DBUIT's light popup for more options/information [here]: (https://github.com/DBuit/light-popup-card#settings) |
 | `settingsPosition` | string | optional | `bottom`  | set position of the settings button options: `top` or `bottom`. |
 
 You may need to set the style of the card:
