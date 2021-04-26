@@ -102,7 +102,8 @@ actions:
     icon: mdi:volume-off
 ```
 The name option within a scene is **optional**<br>
-You can also set the `entity_id` with value `this` if you use `this` it will be replaced with the entity the pop-up is opened for.
+You can also set the `entity_id` with value `this` <br>
+if you use `this` it will be replaced with the entity the pop-up is opened for.
 
 
 Example configuration with next, play/pause and previous actions
