@@ -1,4 +1,4 @@
-# Input number popup card for those using Input Numbers for Volume control (homekit style)
+# Input number popup card for those using Input Numbers for Volume control (homekit style) (Thanks to DBUIT for the hard work)
 Popup lovelace card with volume slider and optional actions to add more control for input number controlled media players.
 Can be used in combination with thomas loven browser_mod or custom pop-up card or in combination with DBuit's homekit style card: https://github.com/DBuit/Homekit-panel-card
 
